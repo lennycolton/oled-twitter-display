@@ -5,7 +5,7 @@ import urllib3
 http = urllib3.PoolManager()
 from OmegaExpansion import oledExp
 
-baseUrl     = "https://api.twitter.com"
+baseUrl     = “api.twitter.com”
 bearerToken = ""
 
 # function to perform applcation-only authentication with Twitter
@@ -83,7 +83,7 @@ def oledWriteTweet(user, text, date):
         return False
 
     # write out the name of the account
-    oledExp.write('@' + user + ':')
+    oledExp.write('@' + user + ' - ')
 
     # set the cursor to the next line
     oledExp.setCursor(1,0)
