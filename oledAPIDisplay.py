@@ -1,6 +1,7 @@
 import os
 import json
 import base64
+import requests
 import urllib3
 http = urllib3.PoolManager()
 from OmegaExpansion import oledExp
@@ -12,9 +13,9 @@ def getAPIData():
     url = baseUrl + 'posts'
 
     # execute the GET request
-    response = request.get(url)
+    response = requests.get(url)
 
-def oledWriteTweet(text):
+def oledWriteData(text):
     if oledExp.driverInit() != 0:
         print 'ERROR: Could not initialize the OLED Expansion'
         return False
@@ -42,7 +43,7 @@ def mainProgram():
 
     print 'Got data! ', data
     # display the tweet on the OLED
-    oledWriteTweet(data['text'])
+    oledWriteData(data['body'])
 
     print 'Done!'
 
