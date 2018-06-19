@@ -12,7 +12,15 @@ def getAPIData():
     url = baseUrl + 'posts'
 
     # execute the GET request
-    response = requests.get(url)
+    data = http.request(
+        'GET',
+        url,
+        userid=userid
+        id=id
+        title=title
+        body=body
+    )
+    return data
 
 def oledWriteData(text):
     if oledExp.driverInit() != 0:
