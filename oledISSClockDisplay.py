@@ -14,10 +14,8 @@ currentdate = ""
 currentlat = ""
 currentlon = ""
 
-place = False
-
 while True:
-    place = not place
+    count = 0
     prevlat = currentlat
     prevlon = currentlon
     prevtime = currenttime
@@ -33,6 +31,7 @@ while True:
     if not place:
         oledExp.setCursor(0,0)
         oledExp.write(currenttime)
+        count = count + 1
 
     if not place:
         oledExp.setCursor(2,0)
@@ -56,7 +55,7 @@ while True:
             else:
                 oledExp.write(str(currentlon) + ' E            ')
 
-    if place:
+    if count == 5:
         if currenttime != prevtime:
             mapreq = urllib2.Request("http://nominatim.openstreetmap.org/reverse?format=json&lat=" + obj['iss_position']['latitude'] + "&lon=" + obj['iss_position']['longitude'] + "&zoom=18&addressdetails=1", headers={ 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4' })
             mapresponse = urllib2.urlopen(mapreq)
@@ -94,20 +93,20 @@ while True:
             except KeyError:
                 country = "No Data Probably Ocean"
 
-            oledExp.clear()
+        oledExp.clear()
 
-            oledExp.setCursor(0,0)
-            oledExp.write(town)
+        oledExp.setCursor(0,0)
+        oledExp.write(town)
 
-            oledExp.setCursor(2,0)
-            oledExp.write(county)
+        oledExp.setCursor(2,0)
+        oledExp.write(county)
 
-            oledExp.setCursor(4,0)
-            oledExp.write(state)
+        oledExp.setCursor(4,0)
+        oledExp.write(state)
 
-            oledExp.setCursor(6,0)
-            oledExp.write(country)
+        oledExp.setCursor(6,0)
+        oledExp.write(country)
 
-            time.sleep(5)
-            oledExp.clear()
+        time.sleep(5)
+        oledExp.clear()
             
