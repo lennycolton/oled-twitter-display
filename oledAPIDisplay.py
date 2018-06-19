@@ -16,7 +16,6 @@ def getAPIData():
         'GET',
         url,
         userid=userid
-        id=id
         title=title
         body=body
     )
