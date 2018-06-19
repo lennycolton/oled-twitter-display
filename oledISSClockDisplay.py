@@ -64,37 +64,40 @@ while True:
             print(mapobj)
 
             try:
-                town = mapobj['address']['city']
+                town = unicode(mapobj['address']['city'])
             except KeyError:
                 try:
-                    town = mapobj['address']['town']
+                    town = unicode(mapobj['address']['town'])
                 except KeyError:
                     try:
-                        town = mapobj['address']['village']
+                        town = unicode(mapobj['address']['village'])
                     except KeyError:
                         try:
-                            town = mapobj['address']['hamlet']
+                            town = unicode(mapobj['address']['hamlet'])
                         except KeyError:
                             try:
-                                town = mapobj['address']['water']
+                                town = unicode(mapobj['address']['water'])
                             except KeyError:
                                 try:
-                                    town = mapobj['address']['path']
+                                    town = unicode(mapobj['address']['path'])
                                 except KeyError:
                                     town = ""
 
             try:
-                county = mapobj['address']['county']
+                county = unicode(mapobj['address']['county'])
             except KeyError:
                 county = ""
 
             try:
-                state = mapobj['address']['state']
+                state = unicode(mapobj['address']['state'])
             except KeyError:
-                state = ""
+                try:
+                    state = unicode(mapobj['address']['state_district'])
+                except KeyError:
+                    state = ""
 
             try:
-                country = mapobj['address']['country']
+                country = unicode(mapobj['address']['country'])
             except KeyError:
                 country = "No Data              Probably Ocean"
 
