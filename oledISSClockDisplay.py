@@ -104,16 +104,16 @@ while True:
         oledExp.clear()
 
         oledExp.setCursor(0,0)
-        oledExp.write(town)
+        oledExp.write(unicode(town))
 
         oledExp.setCursor(2,0)
-        oledExp.write(county)
+        oledExp.write(unicode(county))
 
         oledExp.setCursor(4,0)
-        oledExp.write(state)
+        oledExp.write(unicode(state))
 
         oledExp.setCursor(6,0)
-        oledExp.write(country)
+        oledExp.write(unicode(country))
 
         time.sleep(5)
         oledExp.clear()
