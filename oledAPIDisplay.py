@@ -47,6 +47,7 @@ def mainProgram():
     print('Got data! ', data)
     # display the tweet on the OLED
 ##    oledWriteData(data['body'])
+    print(data)
 
     print('Done!')
 
