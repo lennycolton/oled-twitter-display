@@ -1,56 +1,34 @@
-import os
+import urllib2
 import json
-import base64
-import urllib3
-http = urllib3.PoolManager()
 from OmegaExpansion import oledExp
 
-globalBaseUrl     = "https://jsonplaceholder.typicode.com/"
-bearerToken = ""
+req = urllib2.Request("http://api.open-notify.org/iss-now.json")
+response = urllib2.urlopen(req)
 
-def getAPIData(baseUrl):
-    url = baseUrl + 'posts'
+obj = json.loads(response.read())
 
-    # execute the GET request
-    req = urllib2.request(url)
-    response = urllib2.urlopen(req)
-    return response
+if oledExp.driverInit() != 0:
+    print('ERROR: Could not initialise the OLED Expansion')
+    exit()
 
-##def oledWriteData(text):
-##    if oledExp.driverInit() != 0:
-##        print 'ERROR: Could not initialize the OLED Expansion'
-##        return False
-##
-##    # clear the display
-##    oledExp.clear()
-##
-##
-##    # set the cursor to the next line
-##    oledExp.setCursor(0,0)
-##
-##    # write out the tweet
-##    oledExp.write(text)
+oledExp.clear()
 
+oledExp.setCursor(1,0)
+oledExp.write('Timestamp:')
 
+oledExp.setCursor(2,0)
+oledExp.write(str(obj['timestamp']))
 
-### MAIN PROGRAM ###
-def mainProgram(baseUrl):
+oledExp.setCursor(4,0)
+lat = obj['iss_position']['latitude']
+if float(lat) < 0:
+    oledExp.write(str(lat)[1:] + ' S')
+else:
+    oledExp.write(str(lat) + ' N')
 
-    # use api to get data
-    data= getAPIData(baseUrl)
-    if not data:
-        print("ERROR: Could not retreive data!")
-        exit()
-
-    print('Got data! ', data)
-
-    obj = json.loads(response.read())
-    # display the tweet on the OLED
-##    oledWriteData(data['body'])
-    print(obj['body'])
-
-    print('Done!')
-
-
-if __name__ == "__main__":
-	mainProgram(globalBaseUrl)
+oledExp.setCursor(6,0)
+lon = obj['iss_position']['longitude']
+if float(lon) < 0:
+    oledExp.write(str(lon)[1:] + ' W')
+else:
+    oledExp.write(str(lon) + ' E')
