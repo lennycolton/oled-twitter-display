@@ -64,31 +64,31 @@ while True:
             print(mapobj)
 
             try:
-                town = mapobj['city']
+                town = mapobj['address']['city']
             except KeyError:
                 try:
-                    town = mapobj['town']
+                    town = mapobj['address']['town']
                 except KeyError:
                     try:
-                        town = mapobj['village']
+                        town = mapobj['address']['village']
                     except KeyError:
                         try:
-                            town = mapobj['hamlet']
+                            town = mapobj['address']['hamlet']
                         except KeyError:
                             town = ""
 
             try:
-                county = mapobj['county']
+                county = mapobj['address']['county']
             except KeyError:
                 county = ""
 
             try:
-                state = mapobj['state']
+                state = mapobj['address']['state']
             except KeyError:
                 state = ""
 
             try:
-                country = mapobj['country']
+                country = mapobj['address']['country']
             except KeyError:
                 country = "No Data              Probably Ocean"
 
@@ -109,3 +109,4 @@ while True:
         time.sleep(5)
         oledExp.clear()
         count = 0
+            
