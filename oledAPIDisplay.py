@@ -3,7 +3,7 @@ import json
 import base64
 import urllib3
 http = urllib3.PoolManager()
-f#rom OmegaExpansion import oledExp
+from OmegaExpansion import oledExp
 
 baseUrl     = "https://jsonplaceholder.typicode.com/"
 bearerToken = ""
@@ -12,11 +12,9 @@ def getAPIData():
     url = baseUrl + 'posts'
 
     # execute the GET request
-    data = http.request(
-        'GET',
-        url,
-    )
-    return data
+    req = urllib3.Request(url)
+    response = urllib2.urlopen(req)
+    return response
 
 ##def oledWriteData(text):
 ##    if oledExp.driverInit() != 0:
@@ -45,9 +43,11 @@ def mainProgram():
         exit()
 
     print('Got data! ', data)
+
+    obj = json.loads(response.read())
     # display the tweet on the OLED
 ##    oledWriteData(data['body'])
-    print(data)
+    print(obj['body'])
 
     print('Done!')
 
