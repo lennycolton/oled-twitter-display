@@ -31,7 +31,8 @@ while True:
     if count != 5:
         oledExp.setCursor(0,0)
         oledExp.write(currenttime)
-        count = count + 1
+        if prevtime != currenttime:
+            count = count + 1
 
     if count != 5:
         oledExp.setCursor(2,0)
