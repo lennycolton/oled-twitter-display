@@ -56,7 +56,7 @@ while True:
 
     if count == 5:
         if currenttime != prevtime:
-            mapreq = urllib2.Request("http://nominatim.openstreetmap.org/reverse?format=json&lat=" + obj['iss_position']['latitude'] + "&lon=" + obj['iss_position']['longitude'] + "&zoom=18&addressdetails=1", headers={ 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4' })
+            mapreq = urllib2.Request("http://nominatim.openstreetmap.org/reverse?format=json&lat=" + obj['iss_position']['latitude'] + "&lon=" + obj['iss_position']['longitude'] + "&zoom=18&addressdetails=1&accept-language=en", headers={ 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4' })
             mapresponse = urllib2.urlopen(mapreq)
 
             mapobj = json.loads(mapresponse.read())
@@ -104,16 +104,16 @@ while True:
         oledExp.clear()
 
         oledExp.setCursor(0,0)
-        oledExp.write(str(town))
+        oledExp.write(town)
 
         oledExp.setCursor(2,0)
-        oledExp.write(str(county))
+        oledExp.write(county)
 
         oledExp.setCursor(4,0)
-        oledExp.write(str(state))
+        oledExp.write(state)
 
         oledExp.setCursor(6,0)
-        oledExp.write(str(country))
+        oledExp.write(country)
 
         time.sleep(5)
         oledExp.clear()
