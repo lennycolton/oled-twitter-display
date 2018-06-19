@@ -30,6 +30,11 @@ while True:
     if currenttime != prevtime:
         oledExp.setCursor(0,0)
         oledExp.write(currenttime)
+        
+        req = urllib2.Request("http://nominatim.openstreetmap.org/reverse?format=json&lat="obj['iss_position']['latitude']"&lon="obj['iss_position']['longitude']"&zoom=18&addressdetails=1")
+        response = urllib2.urlopen(req)
+
+        mapobj = json.loads(response.read())
 
     if currentdate != prevdate:
         oledExp.setCursor(2,0)
