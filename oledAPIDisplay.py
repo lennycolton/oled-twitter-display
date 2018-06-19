@@ -5,19 +5,14 @@ import urllib3
 http = urllib3.PoolManager()
 from OmegaExpansion import oledExp
 
-baseUrl     = "https://jsonplaceholder.typicode.com/posts"
+baseUrl     = "https://jsonplaceholder.typicode.com/"
 bearerToken = ""
 
 def getAPIData():
     url = baseUrl + 'posts'
 
     # execute the GET request
-    r = http.request(
-        'GET',
-        url,
-        headers=headers,
-        fields=params
-    )
+    response = request.get(url)
 
 def oledWriteTweet(text):
     if oledExp.driverInit() != 0:
@@ -45,7 +40,7 @@ def mainProgram():
         print "ERROR: Could not retreive data!"
         exit()
 
-    print 'Got data! ', tweet
+    print 'Got data! ', data
     # display the tweet on the OLED
     oledWriteTweet(data['text'])
 
