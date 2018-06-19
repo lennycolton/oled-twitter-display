@@ -47,6 +47,6 @@ while True:
     if currentlon != prevlon:
         oledExp.setCursor(6,0)
         if float(currentlon) < 0:
-            oledExp.write(str(currentlon)[1:] + ' S')
+            oledExp.write(str(currentlon)[1:] + ' W')
         else:
-            oledExp.write(str(currentlon) + ' N')
+            oledExp.write(str(currentlon) + ' E')
