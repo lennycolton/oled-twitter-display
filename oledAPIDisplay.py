@@ -15,10 +15,6 @@ def getAPIData():
     data = http.request(
         'GET',
         url,
-        userid=userid,
-        id=id,
-        title=title,
-        body=body
     )
     return data
 
