@@ -12,11 +12,9 @@ def getAPIData(baseUrl):
     url = baseUrl + 'posts'
 
     # execute the GET request
-    data = http.request(
-        'GET',
-        url,
-    )
-    return data
+    req = urllib2.request(url)
+    response = urllib2.urlopen(req)
+    return response
 
 ##def oledWriteData(text):
 ##    if oledExp.driverInit() != 0:
@@ -45,9 +43,11 @@ def mainProgram(baseUrl):
         exit()
 
     print('Got data! ', data)
+
+    obj = json.loads(response.read())
     # display the tweet on the OLED
 ##    oledWriteData(data['body'])
-    print(data)
+    print(obj['body'])
 
     print('Done!')
 
