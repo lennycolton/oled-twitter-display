@@ -60,7 +60,7 @@ while True:
 
     if place:
         if currenttime != prevtime:
-            mapreq = urllib2.Request("http://nominatim.openstreetmap.org/reverse?format=json&lat="obj['iss_position']['latitude']"&lon="obj['iss_position']['longitude']"&zoom=18&addressdetails=1")
+            mapreq = urllib2.Request("http://nominatim.openstreetmap.org/reverse?format=json&lat=" + obj['iss_position']['latitude'] + "&lon=" + obj['iss_position']['longitude'] + "&zoom=18&addressdetails=1")
             mapresponse = urllib2.urlopen(mapreq)
 
             mapobj = json.loads(mapresponse.read())
