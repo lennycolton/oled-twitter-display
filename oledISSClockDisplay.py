@@ -20,8 +20,8 @@ while True:
     prevlon = currentlon
     prevtime = currenttime
     prevdate = currentdate
-    currenttime = time.strftime("%H:%M:%S                        ")
-    currentdate = time.strftime("%a, %d/%m/%Y                    ")
+    currenttime = time.strftime("%H:%M:%S")
+    currentdate = time.strftime("%a, %d/%m/%Y")
 
     req = urllib2.Request("http://api.open-notify.org/iss-now.json")
     response = urllib2.urlopen(req)
@@ -109,4 +109,3 @@ while True:
         time.sleep(5)
         oledExp.clear()
         count = 0
-            
