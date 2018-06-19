@@ -13,9 +13,9 @@ currenttime = ""
 currentdate = ""
 currentlat = ""
 currentlon = ""
+count = 0
 
 while True:
-    count = 0
     prevlat = currentlat
     prevlon = currentlon
     prevtime = currenttime
@@ -89,7 +89,7 @@ while True:
             try:
                 country = mapobj['country']
             except KeyError:
-                country = "No Data Probably Ocean"
+                country = "No Data, Probably Ocean"
 
         oledExp.clear()
 
@@ -107,4 +107,5 @@ while True:
 
         time.sleep(5)
         oledExp.clear()
+        count = 0
             
