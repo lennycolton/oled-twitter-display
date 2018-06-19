@@ -3,6 +3,9 @@ import json
 import time
 from OmegaExpansion import oledExp
 
+class urlagentspoof(urllib2):
+    version = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11'
+
 if oledExp.driverInit() != 0:
     print('ERROR: Could not initialise the OLED Expansion')
     exit()
@@ -60,8 +63,8 @@ while True:
 
     if place:
         if currenttime != prevtime:
-            mapreq = urllib2.Request("http://nominatim.openstreetmap.org/reverse?format=json&lat=" + obj['iss_position']['latitude'] + "&lon=" + obj['iss_position']['longitude'] + "&zoom=18&addressdetails=1")
-            mapresponse = urllib2.urlopen(mapreq)
+            mapreq = urlagentspoof.Request("http://nominatim.openstreetmap.org/reverse?format=json&lat=" + obj['iss_position']['latitude'] + "&lon=" + obj['iss_position']['longitude'] + "&zoom=18&addressdetails=1")
+            mapresponse = urlagentspoof.urlopen(mapreq)
 
             mapobj = json.loads(mapresponse.read())
             
