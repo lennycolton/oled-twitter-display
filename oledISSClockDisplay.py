@@ -75,7 +75,10 @@ while True:
                         try:
                             town = mapobj['address']['hamlet']
                         except KeyError:
-                            town = ""
+                            try:
+                                town = mapobj['address']['water']
+                            except KeyError:
+                                town = ""
 
             try:
                 county = mapobj['address']['county']
