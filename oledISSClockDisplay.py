@@ -89,7 +89,7 @@ while True:
             try:
                 country = mapobj['country']
             except KeyError:
-                country = "No Data Probably Ocean"
+                country = "No Data, Probably Ocean"
 
         oledExp.clear()
 
