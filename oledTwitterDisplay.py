@@ -5,7 +5,7 @@ import urllib3
 http = urllib3.PoolManager()
 from OmegaExpansion import oledExp
 
-baseUrl     = “api.twitter.com”
+baseUrl     = "api.twitter.com"
 bearerToken = ""
 
 # function to perform applcation-only authentication with Twitter
