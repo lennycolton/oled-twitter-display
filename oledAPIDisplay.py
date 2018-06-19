@@ -1,7 +1,6 @@
 import os
 import json
 import base64
-import requests
 import urllib3
 http = urllib3.PoolManager()
 from OmegaExpansion import oledExp
