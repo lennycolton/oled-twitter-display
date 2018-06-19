@@ -5,15 +5,15 @@ import urllib3
 http = urllib3.PoolManager()
 from OmegaExpansion import oledExp
 
-baseUrl     = "https://jsonplaceholder.typicode.com/"
+globalBaseUrl     = "https://jsonplaceholder.typicode.com/"
 bearerToken = ""
 
-def getAPIData():
+def getAPIData(baseUrl):
     url = baseUrl + 'posts'
 
     # execute the GET request
-    req = urllib3.Request(url)
-    response = urllib2.urlopen(req)
+    req = urllib3.request(url)
+    response = urllib3.urlopen(req)
     return response
 
 ##def oledWriteData(text):
@@ -34,10 +34,10 @@ def getAPIData():
 
 
 ### MAIN PROGRAM ###
-def mainProgram():
+def mainProgram(baseUrl):
 
     # use api to get data
-    data= getAPIData()
+    data= getAPIData(baseUrl)
     if not data:
         print("ERROR: Could not retreive data!")
         exit()
@@ -53,4 +53,4 @@ def mainProgram():
 
 
 if __name__ == "__main__":
-	mainProgram()
+	mainProgram(globalBaseUrl)
