@@ -99,7 +99,7 @@ while True:
             try:
                 country = unicode(mapobj['address']['country'], "utf-8")
             except KeyError:
-                country = unicode("No Data              Probably Ocean", , "utf-8")
+                country = unicode("No Data              Probably Ocean", "utf-8")
 
         oledExp.clear()
 
