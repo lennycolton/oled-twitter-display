@@ -64,56 +64,56 @@ while True:
             print(mapobj)
 
             try:
-                town = unicode(mapobj['address']['city'], "utf-8")
+                town = mapobj['address']['city']
             except KeyError:
                 try:
-                    town = unicode(mapobj['address']['town'], "utf-8")
+                    town = mapobj['address']['town']
                 except KeyError:
                     try:
-                        town = unicode(mapobj['address']['village'], "utf-8")
+                        town = mapobj['address']['village']
                     except KeyError:
                         try:
-                            town = unicode(mapobj['address']['hamlet'], "utf-8")
+                            town = mapobj['address']['hamlet']
                         except KeyError:
                             try:
-                                town = unicode(mapobj['address']['water'], "utf-8")
+                                town = mapobj['address']['water']
                             except KeyError:
                                 try:
-                                    town = unicode(mapobj['address']['path'], "utf-8")
+                                    town = mapobj['address']['path']
                                 except KeyError:
-                                    town = unicode("", "utf-8")
+                                    town = ""
 
             try:
-                county = unicode(mapobj['address']['county'], "utf-8")
+                county = mapobj['address']['county']
             except KeyError:
-                county = unicode("", "utf-8")
+                county = ""
 
             try:
-                state = unicode(mapobj['address']['state'], "utf-8")
+                state = mapobj['address']['state']
             except KeyError:
                 try:
-                    state = unicode(mapobj['address']['state_district']), "utf-8"
+                    state = mapobj['address']['state_district']
                 except KeyError:
-                    state = unicode("", "utf-8")
+                    state = ""
 
             try:
-                country = unicode(mapobj['address']['country'], "utf-8")
+                country = mapobj['address']['country']
             except KeyError:
-                country = unicode("No Data              Probably Ocean", "utf-8")
+                country = "No Data              Probably Ocean"
 
         oledExp.clear()
 
         oledExp.setCursor(0,0)
-        oledExp.write(unicode(town), "utf-8")
+        oledExp.write(str(town))
 
         oledExp.setCursor(2,0)
-        oledExp.write(unicode(county), "utf-8")
+        oledExp.write(str(county))
 
         oledExp.setCursor(4,0)
-        oledExp.write(unicode(state), "utf-8")
+        oledExp.write(str(state))
 
         oledExp.setCursor(6,0)
-        oledExp.write(unicode(country), "utf-8")
+        oledExp.write(str(country))
 
         time.sleep(5)
         oledExp.clear()
