@@ -66,23 +66,47 @@ while True:
             mapobj = json.loads(mapresponse.read())
 
             print(mapobj)
-            
-##            town = mapobj['hamlet']
-##            county = mapobj['county']
-##            state = mapobj['state']
-##            country = mapobj['country']
-##
-##            oledExp.clear()
-##
-##            oledExp.setCursor(0,0)
-##            oledExp.write(hamlet)
-##
-##            oledExp.setCursor(2,0)
-##            oledExp.write(county)
-##
-##            oledExp.setCursor(4,0)
-##            oledExp.write(state)
-##
-##            oledExp.setCursor(6,0)
-##            oledExp.write(country)
+
+            try:
+                town = mapobj['city']
+            except KeyError:
+                try:
+                    town = mapobj['town']
+                except KeyError:
+                    try:
+                        town = mapobj['village']
+                    except KeyError:
+                        try:
+                            town = mapobj['hamlet']
+                        except KeyError:
+                            town = ""
+
+            try:
+                county = mapobj['county']
+            except KeyError:
+                county = ""
+
+            try:
+                state = mapobj['state']
+            except KeyError:
+                state = ""
+
+            try:
+                country = mapobj['country']
+            except KeyError:
+                country = "No Data\nProbably Ocean"
+
+            oledExp.clear()
+
+            oledExp.setCursor(0,0)
+            oledExp.write(town)
+
+            oledExp.setCursor(2,0)
+            oledExp.write(county)
+
+            oledExp.setCursor(4,0)
+            oledExp.write(state)
+
+            oledExp.setCursor(6,0)
+            oledExp.write(country)
             
