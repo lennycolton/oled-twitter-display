@@ -44,14 +44,14 @@ while True:
     if currentlat != prevlat:
         oledExp.setCursor(4,0)
         if float(currentlat) < 0:
-            oledExp.write(str(currentlat)[1:] + ' S')
+            oledExp.write(str(currentlat)[1:] + ' S    ')
         else:
-            oledExp.write(str(currentlat) + ' N')
+            oledExp.write(str(currentlat) + ' N    ')
 
     currentlon = obj['iss_position']['longitude']
     if currentlon != prevlon:
         oledExp.setCursor(6,0)
         if float(currentlon) < 0:
-            oledExp.write(str(currentlon)[1:] + ' W')
+            oledExp.write(str(currentlon)[1:] + ' W    ')
         else:
-            oledExp.write(str(currentlon) + ' E')
+            oledExp.write(str(currentlon) + ' E    ')
