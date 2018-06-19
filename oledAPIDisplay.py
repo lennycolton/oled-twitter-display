@@ -3,7 +3,7 @@ import json
 import base64
 import urllib3
 http = urllib3.PoolManager()
-f#rom OmegaExpansion import oledExp
+from OmegaExpansion import oledExp
 
 globalBaseUrl     = "https://jsonplaceholder.typicode.com/"
 bearerToken = ""
