@@ -4,7 +4,7 @@ import time
 from OmegaExpansion import oledExp
 
 urllibagent = urllib2
-    urllibagent.addheaders = [('User Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11')]
+urllibagent.addheaders = [('User Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11')]
 
 if oledExp.driverInit() != 0:
     print('ERROR: Could not initialise the OLED Expansion')
