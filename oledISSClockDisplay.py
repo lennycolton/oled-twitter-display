@@ -60,27 +60,29 @@ while True:
 
     if place:
         if currenttime != prevtime:
-            mapreq = urllib2.Request("http://nominatim.openstreetmap.org/reverse?format=json&lat=" + obj['iss_position']['latitude'] + "&lon=" + obj['iss_position']['longitude'] + "&zoom=18&addressdetails=1", headers={ 'User-Agent': 'Mozilla/5.0' })
+            mapreq = urllib2.Request("http://nominatim.openstreetmap.org/reverse?format=json&lat=" + obj['iss_position']['latitude'] + "&lon=" + obj['iss_position']['longitude'] + "&zoom=18&addressdetails=1", headers={ 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4' })
             mapresponse = urllib2.urlopen(mapreq)
 
             mapobj = json.loads(mapresponse.read())
+
+            print(mapobj)
             
-            town = mapobj['hamlet']
-            county = mapobj['county']
-            state = mapobj['state']
-            country = mapobj['country']
-
-            oledExp.clear()
-
-            oledExp.setCursor(0,0)
-            oledExp.write(hamlet)
-
-            oledExp.setCursor(2,0)
-            oledExp.write(county)
-
-            oledExp.setCursor(4,0)
-            oledExp.write(state)
-
-            oledExp.setCursor(6,0)
-            oledExp.write(country)
+##            town = mapobj['hamlet']
+##            county = mapobj['county']
+##            state = mapobj['state']
+##            country = mapobj['country']
+##
+##            oledExp.clear()
+##
+##            oledExp.setCursor(0,0)
+##            oledExp.write(hamlet)
+##
+##            oledExp.setCursor(2,0)
+##            oledExp.write(county)
+##
+##            oledExp.setCursor(4,0)
+##            oledExp.write(state)
+##
+##            oledExp.setCursor(6,0)
+##            oledExp.write(country)
             
