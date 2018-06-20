@@ -64,68 +64,68 @@ while True:
             print(mapobj)
 
             try:
+                town = mapobj['address']['city']
+            except KeyError:
                 try:
-                    town = mapobj['address']['city']
+                    town = mapobj['address']['town']
                 except KeyError:
                     try:
-                        town = mapobj['address']['town']
+                        town = mapobj['address']['village']
                     except KeyError:
                         try:
-                            town = mapobj['address']['village']
+                            town = mapobj['address']['hamlet']
                         except KeyError:
                             try:
-                                town = mapobj['address']['hamlet']
+                                town = mapobj['address']['water']
                             except KeyError:
                                 try:
-                                    town = mapobj['address']['water']
+                                    town = mapobj['address']['path']
                                 except KeyError:
-                                    try:
-                                        town = mapobj['address']['path']
-                                    except KeyError:
-                                        town = ""
-            except UnicodeEncodeError:
-                town = ""
+                                    town = ""
 
             try:
-                try:
-                    county = mapobj['address']['county']
-                except KeyError:
-                    county = ""
-            except UnicodeEncodeError:
+                county = mapobj['address']['county']
+            except KeyError:
                 county = ""
 
             try:
+                state = mapobj['address']['state']
+            except KeyError:
                 try:
-                    state = mapobj['address']['state']
+                    state = mapobj['address']['state_district']
                 except KeyError:
-                    try:
-                        state = mapobj['address']['state_district']
-                    except KeyError:
-                        state = ""
-            except UnicodeEncodeError:
-                state = ""
+                    state = ""
 
             try:
-                try:
-                    country = mapobj['address']['country']
-                except KeyError:
-                    country = "No Data              Probably Ocean"
-            except UnicodeEncodeError:
-                country = "Country alphabet incompatible"
+                country = mapobj['address']['country']
+            except KeyError:
+                country = "No Data              Probably Ocean"
 
         oledExp.clear()
 
         oledExp.setCursor(0,0)
-        oledExp.write(town)
+        try:
+            oledExp.write(town)
+        except UnicodeEncodeError:
+            oledExp.write()
 
         oledExp.setCursor(2,0)
-        oledExp.write(county)
+        try:
+            oledExp.write(county)
+        except UnicodeEncodeError:
+            oledExp.write()
 
         oledExp.setCursor(4,0)
-        oledExp.write(state)
+        try:
+            oledExp.write(state)
+        except UnicodeEncodeError:
+            oledExp.write()
 
         oledExp.setCursor(6,0)
-        oledExp.write(country)
+        try:
+            oledExp.write(country)
+        except UnicodeEncodeError:
+            oledExp.write("Alphabet Incompatible")
 
         time.sleep(5)
         oledExp.clear()
