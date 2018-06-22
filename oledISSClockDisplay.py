@@ -107,19 +107,19 @@ while True:
         try:
             oledExp.write(town)
         except UnicodeEncodeError:
-            oledExp.write()
+            oledExp.write("")
 
         oledExp.setCursor(2,0)
         try:
             oledExp.write(county)
         except UnicodeEncodeError:
-            oledExp.write()
+            oledExp.write("")
 
         oledExp.setCursor(4,0)
         try:
             oledExp.write(state)
         except UnicodeEncodeError:
-            oledExp.write()
+            oledExp.write("")
 
         oledExp.setCursor(6,0)
         try:
