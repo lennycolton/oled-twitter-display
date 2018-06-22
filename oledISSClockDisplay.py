@@ -55,6 +55,7 @@ while True:
             oledExp.write(str(currentlon) + ' E            ')
 
     if count == 5:
+        statedistrictcounty = False
         if currenttime != prevtime:
             mapreq = urllib2.Request("http://nominatim.openstreetmap.org/reverse?format=json&lat=" + obj['iss_position']['latitude'] + "&lon=" + obj['iss_position']['longitude'] + "&zoom=18&addressdetails=1&accept-language=en", headers={ 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4' })
             mapresponse = urllib2.urlopen(mapreq)
@@ -86,13 +87,20 @@ while True:
             try:
                 county = mapobj['address']['county']
             except KeyError:
-                county = ""
+                try:
+                    county = mapobj['address']['state_district']
+                    statedistrictcounty = True
+                except KeyError:
+                    county = ""
 
             try:
                 state = mapobj['address']['state']
             except KeyError:
                 try:
-                    state = mapobj['address']['state_district']
+                    if not statedistrictcounty:
+                        state = mapobj['address']['state_district']
+                    else:
+                        state = ""
                 except KeyError:
                     state = ""
 
